@@ -3,7 +3,7 @@
 Copyright (c) Facebook Technologies, LLC and its affiliates. All rights reserved.  
 
 See SampleFramework license.txt for license terms.  Unless required by applicable law 
-or agreed to in writing, the sample code is provided “AS IS” WITHOUT WARRANTIES OR 
+or agreed to in writing, the sample code is provided ï¿½AS ISï¿½ WITHOUT WARRANTIES OR 
 CONDITIONS OF ANY KIND, either express or implied.  See the license for specific 
 language governing permissions and limitations under the license.
 
@@ -12,15 +12,14 @@ language governing permissions and limitations under the license.
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using OVRTouchSample;
 #if UNITY_EDITOR
 using UnityEngine.SceneManagement;
 #endif
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace OVRTouchSample
 {
     // Animated hand visuals for a user of a Touch controller.
-    [RequireComponent(typeof(OVRGrabber))]
     public class Hand : MonoBehaviour
     {
         public const string ANIM_LAYER_NAME_POINT = "Point Layer";
@@ -47,7 +46,7 @@ namespace OVRTouchSample
 
         private Collider[] m_colliders = null;
         private bool m_collisionEnabled = true;
-        private OVRGrabber m_grabber;
+        private XRRayInteractor m_grabber;
 
         List<Renderer> m_showAfterInputFocusAcquired;
 
@@ -65,7 +64,7 @@ namespace OVRTouchSample
 
         private void Awake()
         {
-            m_grabber = GetComponent<OVRGrabber>();
+            m_grabber = GetComponentInParent<XRRayInteractor>();
         }
 
         private void Start()
@@ -104,7 +103,7 @@ namespace OVRTouchSample
 
             float flex = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, m_controller);
 
-            bool collisionEnabled = m_grabber.grabbedObject == null && flex >= THRESH_COLLISION_FLEX;
+            bool collisionEnabled = !m_grabber.hasSelection && flex >= THRESH_COLLISION_FLEX;
             CollisionEnable(collisionEnabled);
 
             UpdateAnimStates();
@@ -183,12 +182,16 @@ namespace OVRTouchSample
 
         private void UpdateAnimStates()
         {
-            bool grabbing = m_grabber.grabbedObject != null;
+            bool grabbing = m_grabber.hasSelection;
             HandPose grabPose = m_defaultGrabPose;
             if (grabbing)
             {
-                HandPose customPose = m_grabber.grabbedObject.GetComponent<HandPose>();
-                if (customPose != null) grabPose = customPose;
+                List<IXRSelectInteractable> selectedItems = m_grabber.interactablesSelected;
+                if(selectedItems.Count != 0) {
+                    XRGrabInteractable item = (XRGrabInteractable) selectedItems[0];
+                    HandPose customPose = item.GetComponent<HandPose>();
+                    if (customPose != null) grabPose = customPose;
+                }
             }
             // Pose
             HandPoseId handPoseId = grabPose.PoseId;
