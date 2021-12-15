@@ -17,23 +17,17 @@ public class XRPCController : MonoBehaviour
     public InputActionProperty deviceRotationInput;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        if(deviceRotationInput == null) {
-            devicePositionInput = target.positionInput;
-        }
-        if(deviceRotationInput == null) {
-            deviceRotationInput = target.rotationInput;
-        }
-    }
-
-    void Update() {
-        if(XRSettings.isDeviceActive && target.positionInput != devicePositionInput) {
-            target.positionInput = devicePositionInput;
-            target.rotationInput = deviceRotationInput;
-        } else if(!XRSettings.isDeviceActive && target.positionInput != pcPositionInput) {
+    void Start() {
+        if(!XRSettings.isDeviceActive) {
+            Debug.Log("No headset is plugged");
+        } else if(XRSettings.isDeviceActive && XRSettings.loadedDeviceName == "MockHMD Display") {
             target.positionInput = pcPositionInput;
             target.rotationInput = pcRotationInput;
+            Debug.Log("PC keyboard and mouse are plugged");
+        } else {
+            target.positionInput = devicePositionInput;
+            target.rotationInput = deviceRotationInput;
+            Debug.Log("Headset is plugged");
         }
     }
 
