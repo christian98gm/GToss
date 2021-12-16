@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit.Inputs.Simulation;
 
 public class XRPCController : MonoBehaviour
 {
 
     public TrackedPoseDriver targetTracker;
     public List<GameObject> controllers;
+    private XRDeviceSimulator deviceSimulator;
 
     public InputActionProperty pcPositionInput;
     public InputActionProperty pcRotationInput;
@@ -23,6 +25,7 @@ public class XRPCController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        deviceSimulator = GetComponentInChildren<XRDeviceSimulator>();
         if(!XRSettings.isDeviceActive)
         {
             Debug.Log("No headset is plugged");
@@ -50,11 +53,11 @@ public class XRPCController : MonoBehaviour
             firstTime = false;
             if(isPC)
             {
-                foreach(var item in controllers)
+                for(int i = 0; i < controllers.Count; i++)
                 {
-                    HandController hc = item.GetComponentInChildren<HandController>();
+                    HandController hc = controllers[i].GetComponentInChildren<HandController>();
                     if(hc != null) {
-                        hc.SetPCMode(true);
+                        hc.SetPCMode(deviceSimulator, i == 0 ? deviceSimulator.manipulateLeftAction : deviceSimulator.manipulateRightAction);
                     }
                 }
             }

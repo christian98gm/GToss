@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit.Inputs.Simulation;
+using UnityEngine.InputSystem;
 
 public class HandController : MonoBehaviour
 {
@@ -11,11 +13,12 @@ public class HandController : MonoBehaviour
     public GameObject controllerPrefab;
     public InputDeviceCharacteristics controllerCharacteristics;
 
-    private InputDevice targetDevice;
+    private UnityEngine.XR.InputDevice targetDevice;
     private GameObject spawnedHand;
     private Animator handAnimator;
 
-    private bool pcMode = false;
+    private XRDeviceSimulator deviceSimulator = null;
+    private InputActionReference deviceController;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +29,7 @@ public class HandController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(pcMode) {
+        if(deviceSimulator != null) {
             UpdatePCHandAnimation();
         } else {
             if(!targetDevice.isValid) {
@@ -40,7 +43,7 @@ public class HandController : MonoBehaviour
     void TryInitialize()
     {
 
-        List<InputDevice> devices = new List<InputDevice>();
+        List<UnityEngine.XR.InputDevice> devices = new List<UnityEngine.XR.InputDevice>();
         InputDevices.GetDevicesWithCharacteristics(controllerCharacteristics, devices);
         if(devices.Count > 0) {
             targetDevice = devices[0];
@@ -55,7 +58,7 @@ public class HandController : MonoBehaviour
     void UpdateDeviceHandAnimation()
     {
         //Trigger
-        if(targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue)) {
+        if(targetDevice.TryGetFeatureValue(UnityEngine.XR.CommonUsages.trigger, out float triggerValue)) {
             handAnimator.SetFloat("Trigger", triggerValue);
         }
         else
@@ -63,7 +66,7 @@ public class HandController : MonoBehaviour
             handAnimator.SetFloat("Trigger", 0);
         }
         //Grip
-        if(targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue)) {
+        if(targetDevice.TryGetFeatureValue(UnityEngine.XR.CommonUsages.grip, out float gripValue)) {
             handAnimator.SetFloat("Grip", gripValue);
         }
         else
@@ -74,10 +77,18 @@ public class HandController : MonoBehaviour
 
     void UpdatePCHandAnimation()
     {
-        Debug.Log("PC Mode ON");
+        //Trigger
+        if(deviceController.action.ReadValue<float>() == 1) {
+            handAnimator.SetFloat("Trigger", deviceSimulator.triggerAction.action.ReadValue<float>());
+        }
+        //Grip
+        if(deviceController.action.ReadValue<float>() == 1) {
+            handAnimator.SetFloat("Grip", deviceSimulator.gripAction.action.ReadValue<float>());
+        }
     }
 
-    public void SetPCMode(bool mode) {
-        pcMode = mode;
+    public void SetPCMode(XRDeviceSimulator simulator, InputActionReference controller) {
+        deviceSimulator = simulator;
+        deviceController = controller;
     }
 }
