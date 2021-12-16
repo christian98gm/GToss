@@ -414,7 +414,6 @@ GameObject:
   m_Component:
   - component: {fileID: 560354372}
   - component: {fileID: 560354376}
-  - component: {fileID: 560354373}
   m_Layer: 0
   m_Name: LeftHand Controller
   m_TagString: Untagged
@@ -436,19 +435,6 @@ Transform:
   m_Father: {fileID: 448359418}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &560354373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 560354371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ca5e33ab550c845a55bfbd9d400f8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controllerPrefab: {fileID: 0}
 --- !u!114 &560354376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,7 +450,7 @@ MonoBehaviour:
   m_UpdateTrackingType: 0
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
-  m_ModelPrefab: {fileID: 608507857902623532, guid: 9a13bad770a026441bcd568437312fd2,
+  m_ModelPrefab: {fileID: 7305393282681725965, guid: 13954a9e9326b744fa291ca1f673fa69,
     type: 3}
   m_ModelParent: {fileID: 0}
   m_Model: {fileID: 0}
@@ -770,7 +756,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ba02751005533428ea664a25e64b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 528173415}
+  targetTracker: {fileID: 528173415}
+  controllers:
+  - {fileID: 560354371}
+  - {fileID: 1699736336}
   pcPositionInput:
     m_UseReference: 0
     m_Action:
@@ -1190,7 +1179,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1699736337}
   - component: {fileID: 1699736341}
-  - component: {fileID: 1699736338}
   m_Layer: 0
   m_Name: RightHand Controller
   m_TagString: Untagged
@@ -1212,19 +1200,6 @@ Transform:
   m_Father: {fileID: 448359418}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1699736338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1699736336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ca5e33ab550c845a55bfbd9d400f8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controllerPrefab: {fileID: 0}
 --- !u!114 &1699736341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1240,7 +1215,7 @@ MonoBehaviour:
   m_UpdateTrackingType: 0
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
-  m_ModelPrefab: {fileID: 2375544253442651524, guid: 8c85f9b2e5c8acb49916a58f720d8cd5,
+  m_ModelPrefab: {fileID: 4843849648564608980, guid: dedb584f298f0254aae380c1157e1d90,
     type: 3}
   m_ModelParent: {fileID: 0}
   m_Model: {fileID: 0}
