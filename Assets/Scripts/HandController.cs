@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit.Inputs.Simulation;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class HandController : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class HandController : MonoBehaviour
     public InputDeviceCharacteristics controllerCharacteristics;
 
     private UnityEngine.XR.InputDevice targetDevice;
+    private ActionBasedController targetController;
     private GameObject spawnedHand;
     private Animator handAnimator;
 
@@ -23,6 +25,7 @@ public class HandController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        targetController = GetComponentInParent<ActionBasedController>();
         TryInitialize();
     }
 
@@ -77,14 +80,18 @@ public class HandController : MonoBehaviour
 
     void UpdatePCHandAnimation()
     {
-        //Trigger
+        /*//Trigger
         if(deviceController.action.ReadValue<float>() == 1) {
             handAnimator.SetFloat("Trigger", deviceSimulator.triggerAction.action.ReadValue<float>());
         }
         //Grip
         if(deviceController.action.ReadValue<float>() == 1) {
             handAnimator.SetFloat("Grip", deviceSimulator.gripAction.action.ReadValue<float>());
-        }
+        }*/
+        //Trigger
+        handAnimator.SetFloat("Trigger", targetController.activateAction.action.ReadValue<float>());
+        //Grip
+        handAnimator.SetFloat("Grip", targetController.selectAction.action.ReadValue<float>());
     }
 
     public void SetPCMode(XRDeviceSimulator simulator, InputActionReference controller) {
