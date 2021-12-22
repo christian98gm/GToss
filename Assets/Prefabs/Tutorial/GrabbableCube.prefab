@@ -103,7 +103,7 @@ PrefabInstance:
     - target: {fileID: 4949976040695338836, guid: 7445fd8dd476b3b4d8c307d7d03aaad6,
         type: 3}
       propertyPath: m_Name
-      value: GrabbableItem
+      value: GrabbableCube
       objectReference: {fileID: 0}
     - target: {fileID: 4949976040695338836, guid: 7445fd8dd476b3b4d8c307d7d03aaad6,
         type: 3}
