@@ -77,7 +77,7 @@ PrefabInstance:
     - target: {fileID: 761607590474187291, guid: 155f1a5751eb57d449eef7d17a85c902,
         type: 3}
       propertyPath: m_Name
-      value: XROriginMove
+      value: AlientPlayerMove
       objectReference: {fileID: 0}
     - target: {fileID: 761607590474187493, guid: 155f1a5751eb57d449eef7d17a85c902,
         type: 3}
@@ -134,6 +134,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 761607590605217325, guid: 155f1a5751eb57d449eef7d17a85c902,
+        type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 7305393282681725965, guid: e1c3437ddafd1f946a35f72068474126,
+        type: 3}
+    - target: {fileID: 761607591748591984, guid: 155f1a5751eb57d449eef7d17a85c902,
+        type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 4843849648564608980, guid: 30c2a7e28a5a0ae47ba8e3490cebc8ac,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 155f1a5751eb57d449eef7d17a85c902, type: 3}
 --- !u!1 &5170154357058247757 stripped
