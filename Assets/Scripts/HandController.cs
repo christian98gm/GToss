@@ -7,7 +7,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class HandController : MonoBehaviour
 {
 
-    public GameObject controllerPrefab;
+    public int prefabIndex = 0;
+    public List<GameObject> controllerPrefabs;
     private const float speed = 10.0f;
 
     private ActionBasedController targetController;
@@ -23,7 +24,7 @@ public class HandController : MonoBehaviour
     void Start()
     {
         targetController = GetComponentInParent<ActionBasedController>();
-        spawnedHand = Instantiate(controllerPrefab, transform);
+        spawnedHand = Instantiate(controllerPrefabs[prefabIndex >= controllerPrefabs.Count ? 0 : Mathf.Max(prefabIndex, 0)], transform);
         handAnimator = spawnedHand.GetComponent<Animator>();
     }
 
