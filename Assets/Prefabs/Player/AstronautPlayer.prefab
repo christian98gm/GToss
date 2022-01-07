@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 761607590474187494}
   - component: {fileID: 12769448060592716}
   m_Layer: 9
-  m_Name: XROrigin
+  m_Name: AstronautPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_UpdateTrackingType: 0
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
-  m_ModelPrefab: {fileID: 7305393282681725965, guid: 13954a9e9326b744fa291ca1f673fa69,
+  m_ModelPrefab: {fileID: 7305393282681725965, guid: bcdef0c408148b441a6ab35b0871694d,
     type: 3}
   m_ModelParent: {fileID: 0}
   m_Model: {fileID: 0}
@@ -1013,7 +1013,7 @@ MonoBehaviour:
   m_UpdateTrackingType: 0
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
-  m_ModelPrefab: {fileID: 4843849648564608980, guid: dedb584f298f0254aae380c1157e1d90,
+  m_ModelPrefab: {fileID: 4843849648564608980, guid: 253bcebcdd89f72438f40b7bc74edcfd,
     type: 3}
   m_ModelParent: {fileID: 0}
   m_Model: {fileID: 0}
