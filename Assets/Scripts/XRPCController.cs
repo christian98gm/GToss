@@ -16,6 +16,14 @@ public class XRPCController : MonoBehaviour
     public InputActionProperty devicePositionInput;
     public InputActionProperty deviceRotationInput;
 
+    private bool isPC = true;
+    private bool deviceOn = false;
+    private UnityEngine.XR.InputDevice device;
+    
+    private InputDeviceCharacteristics deviceChars = InputDeviceCharacteristics.Left
+        | InputDeviceCharacteristics.Controller;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +43,39 @@ public class XRPCController : MonoBehaviour
             targetTracker.rotationInput = deviceRotationInput;
             transform.GetChild(0).gameObject.SetActive(false);
             Debug.Log("Headset is plugged");
+            isPC = false;
         }
     }
 
+    void Update() {
+        LinkMenuController();
+        CheckMenuRequest();
+    }
+
+    private void LinkMenuController() {
+        if(!isPC && !deviceOn) {
+            List<UnityEngine.XR.InputDevice> devices = new List<UnityEngine.XR.InputDevice>();
+            InputDevices.GetDevicesWithCharacteristics(deviceChars, devices);
+            if(devices.Count > 0) {
+                device = devices[0];
+                deviceOn = true;
+            }
+        }
+    }
+
+    private void CheckMenuRequest() {
+        if(isPC) {
+            if(Keyboard.current.mKey.wasPressedThisFrame) {
+                DoMenuStuff();
+            }
+        } else {
+            if(device.TryGetFeatureValue(UnityEngine.XR.CommonUsages.menuButton, out bool buttonPressed) && buttonPressed) {
+                DoMenuStuff();
+            }
+        }
+    }
+
+    private void DoMenuStuff() {
+        Debug.Log("Menu open");
+    }
 }
