@@ -1,16 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class GravityUpdater : MonoBehaviour
 {
 
-    public Text textUI;
+    public TextMeshProUGUI textUI;
 
     public void GravityUpdate(float value)
     {
-        textUI.text = "" + value;
+        textUI.text = value.ToString("F2");
         Physics.gravity = new Vector3(0.0f, value, 0.0f);
     }
 }
