@@ -15,4 +15,9 @@ public class MenuGeneralScript : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void PlayEarthScene ()
+    {
+        SceneManager.LoadScene("Tierra");
+    }
 }
