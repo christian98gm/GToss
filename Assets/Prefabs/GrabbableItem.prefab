@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4949976040695338838}
   - component: {fileID: 1331011114789589340}
   - component: {fileID: 8280385725432248179}
+  - component: {fileID: -504499900365020575}
   m_Layer: 0
   m_Name: GrabbableItem
   m_TagString: Untagged
@@ -174,3 +175,15 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 1
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!114 &-504499900365020575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4949976040695338836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42398d398cce39a448aefb2da8f9e9fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

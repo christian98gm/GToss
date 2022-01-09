@@ -9,7 +9,7 @@ public class HandController : MonoBehaviour
 
     public int prefabIndex = 0;
     public List<GameObject> controllerPrefabs;
-    private const float speed = 10.0f;
+    private const float speed = 0.1f;
 
     private ActionBasedController targetController;
     private GameObject spawnedHand;
@@ -26,6 +26,7 @@ public class HandController : MonoBehaviour
         targetController = GetComponentInParent<ActionBasedController>();
         spawnedHand = Instantiate(controllerPrefabs[prefabIndex >= controllerPrefabs.Count ? 0 : Mathf.Max(prefabIndex, 0)], transform);
         handAnimator = spawnedHand.GetComponent<Animator>();
+        handAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
     }
 
     // Update is called once per frame
@@ -36,12 +37,11 @@ public class HandController : MonoBehaviour
 
     void UpdateHandAnimation()
     {
-        //TODO: Smooth tranasitioning
         //Trigger
         triggerTarget = targetController.activateAction.action.ReadValue<float>();
         if(triggerCurrent != triggerTarget)
         {
-           triggerCurrent = Mathf.MoveTowards(triggerCurrent, triggerTarget, Time.deltaTime * speed);
+           triggerCurrent = Mathf.MoveTowards(triggerCurrent, triggerTarget, speed);
            handAnimator.SetFloat("Trigger", triggerCurrent);
         }
         //handAnimator.SetFloat("Trigger", targetController.activateAction.action.ReadValue<float>());
@@ -49,18 +49,9 @@ public class HandController : MonoBehaviour
         gripTarget = targetController.selectAction.action.ReadValue<float>();
         if(gripCurrent != gripTarget)
         {
-           gripCurrent = Mathf.MoveTowards(gripCurrent, gripTarget, Time.deltaTime * speed);
+           gripCurrent = Mathf.MoveTowards(gripCurrent, gripTarget, speed);
            handAnimator.SetFloat("Grip", gripCurrent);
         }
         //handAnimator.SetFloat("Grip", targetController.selectAction.action.ReadValue<float>());
-    }
-
-    void SetGrip(float v)
-    {
-        gripTarget = v;
-    }
-
-    void SetTrigger(float v) {
-        triggerTarget = v;
     }
 }
