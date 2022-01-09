@@ -4,9 +4,12 @@ using UnityEngine;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
+using UnityEngine.SceneManagement;
 
 public class XRPCController : MonoBehaviour
 {
+    public static bool gameIsPaused = false;
+    public GameObject pauseMenuUI;
 
     public TrackedPoseDriver targetTracker;
 
@@ -76,6 +79,34 @@ public class XRPCController : MonoBehaviour
     }
 
     private void DoMenuStuff() {
-        Debug.Log("Menu open");
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name != "MainMenu")
+        {
+            if (gameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+            Debug.Log("Menu open");
+        }
+        
+
+    }
+
+    private void Resume()
+    {
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        gameIsPaused = false;
+    }
+
+    private void Pause()
+    {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        gameIsPaused = true;
     }
 }

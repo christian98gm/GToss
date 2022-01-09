@@ -692,6 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ba02751005533428ea664a25e64b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenuUI: {fileID: 0}
   targetTracker: {fileID: 761607591378731778}
   pcPositionInput:
     m_UseReference: 0
