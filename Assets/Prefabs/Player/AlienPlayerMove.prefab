@@ -77,7 +77,7 @@ PrefabInstance:
     - target: {fileID: 761607590474187291, guid: 155f1a5751eb57d449eef7d17a85c902,
         type: 3}
       propertyPath: m_Name
-      value: AlientPlayerMove
+      value: AlienPlayerMove
       objectReference: {fileID: 0}
     - target: {fileID: 761607590474187493, guid: 155f1a5751eb57d449eef7d17a85c902,
         type: 3}
