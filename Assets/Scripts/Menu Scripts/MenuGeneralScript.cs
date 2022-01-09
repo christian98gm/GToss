@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MenuGeneralScript : MonoBehaviour
 {
+
+    public void RestartMap()
+    {
+        Scene scene = SceneManager.GetActiveScene(); 
+        SceneManager.LoadScene(scene.name);
+    }
    
     public void ExitGame()
     {
