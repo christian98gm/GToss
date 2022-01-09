@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.CoreModule;
 
 public class Canasta : MonoBehaviour
 {
@@ -13,7 +12,7 @@ public class Canasta : MonoBehaviour
         {
             if(collision.tag == "Player") //Puede ser "pelota" o lo que sea que pongais como tag
             {
-                GameObject.FindByTag("MenuAlGanar").active = true;
+                GameObject.FindWithTag("MenuAlGanar").active = true;
             }
         }
     }
