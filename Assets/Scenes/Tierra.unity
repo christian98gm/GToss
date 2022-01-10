@@ -2571,6 +2571,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameOver
       objectReference: {fileID: 0}
+    - target: {fileID: 1987147651699076536, guid: f18f53c145e564a47b44d9274172de6e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1987147651699076540, guid: f18f53c145e564a47b44d9274172de6e,
         type: 3}
       propertyPath: m_Camera
@@ -2633,6 +2638,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18f53c145e564a47b44d9274172de6e, type: 3}
+--- !u!1 &1178536574459426460 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1987147651699076536, guid: f18f53c145e564a47b44d9274172de6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1178536574459426459}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1178536574459426461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178536574459426460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31be026ec5aebcc4a8ca260a030b30db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5333889082440534235
 PrefabInstance:
   m_ObjectHideFlags: 0
