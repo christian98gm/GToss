@@ -21,6 +21,7 @@ public class XRPCController : MonoBehaviour
 
     private bool isPC = true;
     private bool deviceOn = false;
+    private bool firstPress = true;
     private UnityEngine.XR.InputDevice device;
     
     private InputDeviceCharacteristics deviceChars = InputDeviceCharacteristics.Left
@@ -72,8 +73,13 @@ public class XRPCController : MonoBehaviour
                 DoMenuStuff();
             }
         } else {
-            if(device.TryGetFeatureValue(UnityEngine.XR.CommonUsages.menuButton, out bool buttonPressed) && buttonPressed) {
-                DoMenuStuff();
+            if(device.TryGetFeatureValue(UnityEngine.XR.CommonUsages.menuButton, out bool buttonPressed)) {
+                if(buttonPressed && firstPress) {
+                    DoMenuStuff();
+                    firstPress = false;
+                } else if(!buttonPressed) {
+                    firstPress = true;
+                }
             }
         }
     }
