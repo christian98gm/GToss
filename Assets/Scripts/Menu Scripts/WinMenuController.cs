@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-public class menuController : MonoBehaviour 
+public class WinMenuController : MonoBehaviour 
 {
-    public Canvas menuCanvas;
+    public GameObject menuCanvas;
+
     public void RestartMap()
     {
         Scene scene = SceneManager.GetActiveScene();
@@ -14,6 +15,7 @@ public class menuController : MonoBehaviour
 
     public void NextLevel()
     {
+        //TODO: Not working
         int scene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(scene + 1);
     }
@@ -23,14 +25,13 @@ public class menuController : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    
     public void OnTriggerEnter(Collider other)
     {
-
-        if (other.gameObject.CompareTag("Player"))
+        Debug.Log(other.gameObject.tag);
+        if (other.gameObject.CompareTag("Canasta"))
         {
-            menuCanvas.GetComponent<Canvas>().enabled = true;
+            menuCanvas.SetActive(true);
         }
-
     }
+
 }  
