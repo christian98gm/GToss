@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
 public class menuController : MonoBehaviour 
-{ 
-    public Button nextLevelButton;
-    public Button goToMenuButton;
+{
+    public Canvas menuCanvas;
     public void RestartMap()
     {
         Scene scene = SceneManager.GetActiveScene();
@@ -26,12 +24,13 @@ public class menuController : MonoBehaviour
     }
 
     
-    public void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter(Collider other)
     {
-        if(collision.tag == "Player")
+
+        if (other.gameObject.CompareTag("Player"))
         {
-            nextLevelButton.interactable = true;
-            goToMenuButton.interactable = true;
+            menuCanvas.GetComponent<Canvas>().enabled = true;
         }
+
     }
 }  
