@@ -7,7 +7,7 @@ public class GravityUpdater : MonoBehaviour
 {
 
     public TextMeshProUGUI textUI;
-    public float defaultG = Physics.gravity.y;
+    public float defaultG = -9.81f;
 
     private void Start()
     {
