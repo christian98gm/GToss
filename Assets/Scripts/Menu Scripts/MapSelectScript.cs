@@ -12,7 +12,7 @@ public class MapSelectScript : MonoBehaviour
 
     private int current = 0;
 
-    public void Start()
+    public void RegisterListeners()
     {
         leftBtn.onClick.AddListener(SlideLeft);
         RightBtn.onClick.AddListener(SlideRight);
@@ -31,7 +31,6 @@ public class MapSelectScript : MonoBehaviour
             animator.SetBool("slideLeft", false);
             current = 0;
         }
-
     }
 
     public void SlideLeft ()

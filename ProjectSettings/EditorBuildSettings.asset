@@ -17,6 +17,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tierra.unity
     guid: 5800bc1a450584cb79361e3c01446156
+  - enabled: 1
+    path: Assets/Scenes/Moon.unity
+    guid: 0e9b9110c46396c498b2b4760729a961
+  - enabled: 1
+    path: Assets/Scenes/Jupiter.unity
+    guid: bce6bdfdd2e19a7408b7cf109c04d681
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 0cf4c5acbb60821489f0f62b191d6fbb,
       type: 2}
