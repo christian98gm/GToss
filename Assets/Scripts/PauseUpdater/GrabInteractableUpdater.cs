@@ -6,6 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class GrabInteractableUpdater : MonoBehaviour
 {
 
+    private bool thrown = false;
     private XRGrabInteractable interactable;
 
     // Start is called before the first frame update
@@ -20,7 +21,11 @@ public class GrabInteractableUpdater : MonoBehaviour
         if(Time.deltaTime == 0f) {
             interactable.enabled = false;
         } else {
-            interactable.enabled = true;
+            interactable.enabled = !thrown;
         }
+    }
+
+    public void Throw() {
+        thrown = true;
     }
 }
