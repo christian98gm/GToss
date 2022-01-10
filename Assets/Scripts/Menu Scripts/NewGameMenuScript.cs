@@ -7,7 +7,7 @@ public class NewGameMenuScript : MonoBehaviour
 {
     public void playTutorial ()
     {
-        SceneManager.LoadScene("TutorialScene");
+        SceneManager.LoadScene("Tutorial");
     }
    
 }
