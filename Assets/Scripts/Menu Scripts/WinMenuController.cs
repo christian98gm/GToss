@@ -13,13 +13,6 @@ public class WinMenuController : MonoBehaviour
         SceneManager.LoadScene(scene.name);
     }
 
-    public void NextLevel()
-    {
-        //TODO: Not working
-        int scene = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(scene + 1);
-    }
-
     public void ExitToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
